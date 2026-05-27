@@ -333,7 +333,13 @@ class VLMConverter:
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Batch PDF → Markdown via local VLM.")
-    p.add_argument("pdf_dir", type=Path, help="Folder containing input .pdf files")
+    p.add_argument(
+        "pdf_dir",
+        type=Path,
+        nargs="?",
+        default=Path("/home/ducduy/agentic-rag/pdf_docs"),
+        help="Folder containing input .pdf files",
+    )
     p.add_argument("-o", "--output-dir", type=Path, default=Path(config.MARKDOWN_DIR),
                    help=f"Output folder (default: {config.MARKDOWN_DIR})")
     p.add_argument("--model", default=DEFAULT_MODEL)
